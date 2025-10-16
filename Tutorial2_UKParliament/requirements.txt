@@ -1,0 +1,13 @@
+# Core data processing
+pandas>=2.0.0
+openpyxl>=3.1.0
+
+# Graph database driver
+neo4j>=5.8.0
+
+# Data2Neo framework for structured ETL into Neo4j
+data2neo>=0.3.4
+
+# Optional but recommended for YAML schema parsing and logging
+pyyaml>=6.0.1
+loguru>=0.7.0

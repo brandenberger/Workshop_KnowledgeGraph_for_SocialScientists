@@ -1,0 +1,26 @@
+# UK Parliament debates → Neo4j using Data2Neo wrappers.
+
+ENTITY("Debates"):
+
+  # ---------------------------
+  # Core Debate node (co-label = Debates.Type)
+  # ---------------------------
+  FILTER_ALLOWED_TYPES(NODE("Debate", Debates.Type)) debate:
+    + uid         = Debates.UID
+    - ref         = STRIP_EMPTY_TO_NONE(Debates.Ref)
+    - title       = STRIP_EMPTY_TO_NONE(Debates.Title)
+    - legislation = STRIP_EMPTY_TO_NONE(Debates.Legislation)
+
+  FILTER_ALLOWED_TYPES(STORE_CHAMBER(RELATIONSHIP(debate, "placeholder", debate))):
+  FILTER_ALLOWED_TYPES(STORE_DEPARTMENT(RELATIONSHIP(debate, "placeholder", debate))):
+
+  # ---------------------------
+  # Subjects
+  # ---------------------------
+  FILTER_ALLOWED_TYPES(STORE_SUBJECTS(RELATIONSHIP(debate, "placeholder", debate))):
+
+  # ---------------------------
+  # Text nodes (DebateText / QuestionText / AnswerText) + CONTAINS
+  # Members & links (AUTHORS / SPONSORS / MEMBER_OF / HOLDS / GIVES / ANSWERS)
+  # ---------------------------
+  FILTER_ALLOWED_TYPES(BUILD_TEXTS_AND_LINKS(RELATIONSHIP(debate, "placeholder", debate))):
