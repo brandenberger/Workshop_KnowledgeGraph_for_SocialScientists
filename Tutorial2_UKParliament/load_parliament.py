@@ -16,12 +16,12 @@ from parliament_modules import *  # wrappers
 
 # config (try to keep credentials out of code in real use, use env vars or a config file)
 # this is just an example, adjust as needed
-EXCEL_FILE   = "debates.xlsx"
+EXCEL_FILE   = "Tutorial2_UKParliament/debates.xlsx"
 SHEET_NAME   = "Sheet1"
-NEO4J_URI    = "bolt://localhost:7687"
+NEO4J_URI    = "neo4j://127.0.0.1:7687"
 NEO4J_USER   = "neo4j"
 NEO4J_PASS   = "password"
-SCHEMA_FILE  = "conversion_schema.yaml"
+SCHEMA_FILE  = "Tutorial2_UKParliament/conversion_schema.yaml"
 
 # --- Helpers ---
 def split_clean(value):
